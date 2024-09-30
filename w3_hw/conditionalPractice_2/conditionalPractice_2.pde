@@ -1,11 +1,11 @@
 void setup() {
-  size(640, 360);
+  size(620, 360);
 }
 
 void draw() {
   background(0);
   stroke(255);
-  fill(175);
+  fill(#FF4400);
   rectMode(CENTER);
 
   if (mouseY < 90 ) {
@@ -19,7 +19,7 @@ void draw() {
   }
 
   stroke(127);
-  strokeWeight(4);
+  strokeWeight(3);
  
   line(0,90,width,90);
   line(0,180,width,180);
