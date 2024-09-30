@@ -1,4 +1,4 @@
-boolean brushing = false;
+ㅋboolean brushing = false;
 
 void setup() {
   size(600, 400);
