@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Floating Words</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+          }
+          .word {
+            position: absolute;
+            font-size: 24px;
+            animation: float 5s infinite;
+          }
+          @keyframes float {
+            0% {
+              transform: translate(0, 0);
+            }
+            50% {
+              transform: translate(50px, -50px);
+            }
+            100% {
+              transform: translate(0, 0);
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <input type="text" id="input" placeholder="Type a word" />
+        <button onclick="addWord()">Add Word</button>
+
+        <script>
+          function addWord() {
+            const input = document.getElementById('input');
+            const word = input.value;
+            const wordElement = document.createElement('div');
+            wordElement.classList.add('word');
+            wordElement.innerText = word;
+            document.body.appendChild(wordElement);
+            wordElement.style.left = Math.random() * window.innerWidth + 'px';
+            wordElement.style.top = Math.random() * window.innerHeight + 'px';
+            input.value = '';
+          }
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
