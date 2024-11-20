@@ -14,7 +14,7 @@ function draw() {
   if (mouseIsPressed) {
     cnt++;
   }
-  background('#E8E6E6');
+  background(232, 230, 230);
 
   for (let idx = confetties.length - 1; idx >= 0; idx--) {
     let aConfetti = confetties[idx];
