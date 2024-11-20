@@ -46,7 +46,6 @@ function keyPressed() {
   }
 }
 
-// 유틸리티 함수
 function gen(x, y, n) {
   for (let idx = 0; idx < n; idx++) {
     let randomW = random(4, 20);
