@@ -66,7 +66,6 @@ function gen(x, y, n) {
   }
 }
 
-// Confetti 클래스 정의
 class Confetti {
   constructor(x, y, w, h, colour, force, angForce) {
     this.pos = [x, y];
