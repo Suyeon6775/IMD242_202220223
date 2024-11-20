@@ -1,4 +1,3 @@
-// 전역 변수
 let colours = ['#257180', '#F2E5BF', '#FD8B51', '#CB6040'];
 
 let gravity = [0, 0.1];
@@ -7,7 +6,6 @@ let cnt = 0;
 let mouse = [0, 0];
 let confetties = [];
 
-// 클래스 정의
 class Confetti {
   constructor(x, y, w, h, colour, force, angForce) {
     this.pos = [x, y];
@@ -59,7 +57,6 @@ class Confetti {
   }
 }
 
-// 유틸리티 함수
 function gen(x, y, n) {
   for (let idx = 0; idx < n; idx++) {
     let randomW = random(4, 20);
@@ -79,7 +76,6 @@ function gen(x, y, n) {
   }
 }
 
-// p5.js 기본 함수
 function setup() {
   createCanvas(800, 800);
 }
@@ -103,7 +99,6 @@ function draw() {
   }
 }
 
-// 이벤트 핸들러
 function mousePressed() {
   cnt = 0;
   mouse[0] = mouseX;
