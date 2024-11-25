@@ -1,6 +1,4 @@
 var Engine = Matter.Engine,
-  Render = Matter.Render,
-  Runner = Matter.Runner,
   Composites = Matter.Composites,
   MouseConstraint = Matter.MouseConstraint,
   Mouse = Matter.Mouse,
@@ -12,21 +10,21 @@ var engine = Engine.create(),
   world = engine.world;
 
 // create renderer
-var render = Render.create({
-  element: document.body,
-  engine: engine,
-  options: {
-    width: 800,
-    height: 600,
-    showAngleIndicator: true,
-  },
-});
+// var render = Render.create({
+//   element: document.querySelector('.matter'),
+//   engine: engine,
+//   options: {
+//     showAngleIndicator: true,
+//   },
+// });
 
-Render.run(render);
+//위를 각주처리 했기 때문에 이것도 각주처리
+// Render.run(render);
 
 // create runner
-var runner = Runner.create();
-Runner.run(runner, engine);
+// var runner = Runner.create();
+// Runner.run(runner, engine);
+//여기도 마찬가지
 
 // add bodies
 var stack = Composites.stack(
@@ -41,36 +39,53 @@ var stack = Composites.stack(
   }
 );
 
-Composite.add(world, [
-  stack,
-  // walls
+Composite.add(world, [stack]);
+
+let walls = [
   Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
   Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
   Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
   Bodies.rectangle(400, 606, 800, 50.5, { isStatic: true }),
-]);
+];
+
+Composite.add(world, [walls]);
 
 // add mouse control
-var mouse = Mouse.create(render.canvas),
-  mouseConstraint = MouseConstraint.create(engine, {
-    mouse: mouse,
-    constraint: {
-      stiffness: 0.2,
-      render: {
-        visible: false,
-      },
-    },
+// var mouse = Mouse.create(render.canvas),
+//   mouseConstraint = MouseConstraint.create(engine, {
+//     mouse: mouse,
+//     constraint: {
+//       stiffness: 0.2,
+//       render: {
+//         visible: false,
+//       },
+//     },
+//   });
+
+// Composite.add(world, mouseConstraint);
+
+function setup() {
+  createCanvas(800, 600);
+  console.log(walls);
+  background(255);
+  console.log(stack);
+}
+
+function draw() {
+  background(255);
+
+  stack.bodies.forEach((aBody) => {
+    beginShape();
+    aBody.vertices.forEach((aVertex) => {
+      vertex(aVertex.x, aVertex.y);
+    });
+    endShape(CLOSE);
   });
 
-Composite.add(world, mouseConstraint);
-
-// keep the mouse in sync with rendering
-render.mouse = mouse;
-
-// fit the render viewport to the scene
-Render.lookAt(render, {
-  min: { x: 0, y: 0 },
-  max: { x: 800, y: 600 },
-});
-
-// context for MatterTools.Demo
+  walls.forEach((eachWall) => {});
+  beginShape();
+  eachWall.vertices.forEach((eachVertex) => {
+    vertex(eachVertex.x, eachVertex.y);
+  });
+  endShape();
+}
